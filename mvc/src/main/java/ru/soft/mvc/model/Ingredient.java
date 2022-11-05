@@ -1,18 +1,26 @@
 package ru.soft.mvc.model;
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import lombok.*;
 
-@Data
-@Table
-//@AllArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
+//@Data
+@Entity
+@ToString
+@Getter
+@Setter
+@EqualsAndHashCode
+@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Ingredient {
 
     @Id
     private final String id;
     private final String name;
+    @Enumerated(value = EnumType.STRING)
     private final Type type;
 
     public enum Type {
@@ -20,3 +28,20 @@ public class Ingredient {
     }
 
 }
+
+//@Data
+//@Table
+////@AllArgsConstructor
+////@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+//public class Ingredient {
+//
+//    @Id
+//    private final String id;
+//    private final String name;
+//    private final Type type;
+//
+//    public enum Type {
+//        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
+//    }
+//
+//}
