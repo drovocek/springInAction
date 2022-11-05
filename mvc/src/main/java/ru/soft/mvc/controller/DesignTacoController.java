@@ -10,7 +10,7 @@ import ru.soft.mvc.model.Ingredient;
 import ru.soft.mvc.model.Ingredient.Type;
 import ru.soft.mvc.model.Taco;
 import ru.soft.mvc.model.TacoOrder;
-import ru.soft.mvc.repository.IngredientRepository;
+import ru.soft.mvc.repository.IngredientRepositoryJDBC;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.stream.StreamSupport;
 @RequiredArgsConstructor
 public class DesignTacoController {
 
-    private final IngredientRepository ingredientRepo;
+    private final IngredientRepositoryJDBC ingredientRepo;
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {

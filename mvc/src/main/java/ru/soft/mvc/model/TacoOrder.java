@@ -2,6 +2,9 @@ package ru.soft.mvc.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -11,13 +14,15 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Table
 public class TacoOrder {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     private Long id;
 
-    private Date placedAt;
+    private Date placedAt = new Date();
 
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
@@ -28,9 +33,11 @@ public class TacoOrder {
     @NotBlank(message = "City is required")
     private String deliveryCity;
 
+    @Length(max = 2)
     @NotBlank(message = "State is required")
     private String deliveryState;
 
+    @Length(max = 10)
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
 

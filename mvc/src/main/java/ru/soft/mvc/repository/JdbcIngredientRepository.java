@@ -18,7 +18,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     @Override
     public Ingredient save(Ingredient ingredient) {
-        jdbcTemplate.update(
+        this.jdbcTemplate.update(
                 "insert into Ingredient (id, name, type) values (?, ?, ?)",
                 ingredient.getId(),
                 ingredient.getName(),
@@ -28,14 +28,14 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     @Override
     public Iterable<Ingredient> findAll() {
-        return jdbcTemplate.query(
+        return this.jdbcTemplate.query(
                 "select id, name, type from Ingredient",
                 this::mapRowToIngredient);
     }
 
     @Override
     public Optional<Ingredient> findById(String id) {
-        List<Ingredient> results = jdbcTemplate.query(
+        List<Ingredient> results = this.jdbcTemplate.query(
                 "select id, name, type from Ingredient where id=?",
                 this::mapRowToIngredient,
                 id);
